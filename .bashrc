@@ -6,7 +6,6 @@
 export USER_PATH="~/bin"			# Extra paths.
 export EDITOR=vi				# Preferred editor.
 export PRINTER=lp				# Preferred printer.
-export NNTPSERVER=usenet.cisco.com		# Preferred news server.
 
 ##
 # Should the full environment be set up even for non-interactive shells?
@@ -87,7 +86,7 @@ PS1='\[\033[032m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h \[\033[00;34m\][ \[\033[01
 [ -f ~/.bashrc_BU ] && . ~/.bashrc_BU
 [ -f ~/.bashrc_USER ] && . ~/.bashrc_USER
 
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/cisco/bin:.:/usr/local/sbin:/usr/local/bin:/usr/bin/X11
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin:.:/usr/local/sbin:/usr/local/bin:/usr/bin/X11
 source ~/.bash_aliases
 alias ls='ls --color=never'
 alias vi='vim'
