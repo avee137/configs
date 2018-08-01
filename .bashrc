@@ -6,6 +6,7 @@
 export USER_PATH="~/bin"			# Extra paths.
 export EDITOR=vi				# Preferred editor.
 export PRINTER=lp				# Preferred printer.
+export NNTPSERVER=usenet.cisco.com		# Preferred news server.
 
 ##
 # Should the full environment be set up even for non-interactive shells?
@@ -86,7 +87,7 @@ PS1='\[\033[032m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h \[\033[00;34m\][ \[\033[01
 [ -f ~/.bashrc_BU ] && . ~/.bashrc_BU
 [ -f ~/.bashrc_USER ] && . ~/.bashrc_USER
 
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin:.:/usr/local/sbin:/usr/local/bin:/usr/bin/X11
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin:.:/usr/local/sbin:/usr/local/bin:/usr/bin/X11:/usr/games
 source ~/.bash_aliases
 alias ls='ls --color=never'
 alias vi='vim'
@@ -128,6 +129,9 @@ eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 alias compile='./compile.sh'
 
+#patch
+alias putpch='patch -p1 <'
+
 #disable ctrl s on terminal
 stty -ixon
 
@@ -138,6 +142,41 @@ export PATH=$PATH:$ANDROID_HOME/tools
 #OS lab cs506
 alias sos='sshpass -p Whathefk1! ssh -p 130 -t root@vl55.cs.stonybrook.edu "cd /usr/src/hw3-cse506g05/ ; bash"'
 #press 'Enter''~''.' to close frozen connections
+#git
+alias gitlast='git rev-parse HEAD | xargs git show --name-only'
+alias gitlast-full='git rev-parse HEAD | xargs git show'
 
 # added by Miniconda2 installer
 #export PATH="/home/avkumar/miniconda2/bin:$PATH"
+# clinc
+function docker-flush() {
+    dockerlist=$(docker ps -a -q)
+    if [ "${dockerlist}" != "" ]; then
+        for d in ${dockerlist}; do
+            echo "***** ${d}"
+            docker stop ${d} 2>&1 > /dev/null
+            docker rm ${d} 2>&1 > /dev/null
+        done
+    fi
+}
+
+function lucida-full-stack() {
+    docker-flush && make docker && docker-compose up
+}
+
+export EDITOR=vim ####whatever editor
+export CLINC_PATH=/home/avinash.kumar/workspace/lucida-clinc
+export LUCIDA_HOSTNAME=ghats.clinc.ai 
+export PYTHONPATH=/home/avinash.kumar/workspace/lucida-clinc
+
+#leetcode
+alias lc='leetcode'
+alias lch='echo "Read help first                         $ leetcode help
+Login with your leetcode account        $ leetcode user -l
+Browse all questions                    $ leetcode list
+Choose one question                     $ leetcode show 1 -g -l cpp
+Coding it!
+Run test(s) and pray...                 $ leetcode test ./two-sum.cpp -t '[3,2,4]\n7'
+Submit final solution!                  $ leetcode submit ./two-sum.cpp
+"
+'
