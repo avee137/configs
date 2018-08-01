@@ -6,7 +6,6 @@
 export USER_PATH="~/bin"			# Extra paths.
 export EDITOR=vi				# Preferred editor.
 export PRINTER=lp				# Preferred printer.
-export NNTPSERVER=usenet.cisco.com		# Preferred news server.
 
 ##
 # Should the full environment be set up even for non-interactive shells?
@@ -41,70 +40,17 @@ export HISTTIMEFORMAT="%h/%d - %H:%M:%S " #history time date display format
 export ignoreeof=10              # disable ^D for logout (up to 10)
 set -C                           # disable redirect overwrite
 set -b                           # enable immediate job notify
-#export PS1="\h:\w # "            # shell prompt format
-########################################################
-#txtblk='\e[0;30m' # Black - Regular
-#txtred='\e[0;31m' # Red
-#txtgrn='\e[0;32m' # Green
-#txtylw='\e[0;33m' # Yellow
-#txtblu='\e[0;34m' # Blue
-#txtpur='\e[0;35m' # Purple
-#txtcyn='\e[0;36m' # Cyan
-#txtwht='\e[0;37m' # White
-#bldblk='\e[1;30m' # Black - Bold
-#bldred='\e[1;31m' # Red
-#bldgrn='\e[1;32m' # Green
-#bldylw='\e[1;33m' # Yellow
-#bldblu='\e[1;34m' # Blue
-#bldpur='\e[1;35m' # Purple
-#bldcyn='\e[1;36m' # Cyan
-#bldwht='\e[1;37m' # White
-#unkblk='\e[4;30m' # Black - Underline
-#undred='\e[4;31m' # Red
-#undgrn='\e[4;32m' # Green
-#undylw='\e[4;33m' # Yellow
-#undblu='\e[4;34m' # Blue
-#undpur='\e[4;35m' # Purple
-#undcyn='\e[4;36m' # Cyan
-#undwht='\e[4;37m' # White
-#bakblk='\e[40m'   # Black - Background
-#bakred='\e[41m'   # Red
-#bakgrn='\e[42m'   # Green
-#bakylw='\e[43m'   # Yellow
-#bakblu='\e[44m'   # Blue
-#bakpur='\e[45m'   # Purple
-#bakcyn='\e[46m'   # Cyan
-#bakwht='\e[47m'   # White
-#txtrst='\e[0m'    # Text Reset
-#######################################
 
 export  PS1="\[\e[0;36m\][\e[0;36m\]\u@\[\e[32;1m\]\h:\[\e[0;36m\]\w]\\$\[\e[0m\] "
 #PS1='\[\033[032m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h \[\033[00;34m\][ \[\033[01;34m\]\w \[\033[00;34m\]]\[\033[01;32m\]$ \[\033[00m\]'
 PS1='\[\033[032m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h \[\033[00;34m\][ \[\033[01;34m\]\W \[\033[00;34m\]]\[\033[01;32m\]$ \[\033[00m\]'
 ##
-# Source other rc files after this line.
-[ -f ~/.bashrc_LOB ] && . ~/.bashrc_LOB
-[ -f ~/.bashrc_BU ] && . ~/.bashrc_BU
-[ -f ~/.bashrc_USER ] && . ~/.bashrc_USER
-
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin:.:/usr/local/sbin:/usr/local/bin:/usr/bin/X11:/usr/games
 source ~/.bash_aliases
 alias ls='ls --color=never'
 alias vi='vim'
 alias vim='vim -X'
 alias pycclean='find . -name "*.pyc" -exec rm -rf {} \;'
-alias ns='cd /home/avkumar/coursework/fall17/netsec'
-alias ai='cd /home/avkumar/coursework/fall17/ai'
-alias as='cd /home/avkumar/coursework/fall17/async'
-alias bcr='cd /home/avkumar/coursework/fall17/async/project/ByzantineChainReplication/'
-alias cb='cd /home/avkumar/coursework/fall17/compbio'
-alias spring='cd /home/avkumar/coursework/spring18'
-alias 523='cd /home/avkumar/coursework/spring18/523/crawler/src/'
-alias pb='cd /home/avkumar/coursework/interview/problems/'
-alias ws='cd /home/avkumar/workspace/'
-#distAlgo
-#alias python='python3'
-#export PYTHONPATH=/home/avkumar/coursework/fall17/async/project/pyDistAlgo-1.0.9/
 # function to set terminal title
 function set-title(){
   if [[ -z "$ORIG" ]]; then
@@ -139,36 +85,11 @@ stty -ixon
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 
-#OS lab cs506
-alias sos='sshpass -p Whathefk1! ssh -p 130 -t root@vl55.cs.stonybrook.edu "cd /usr/src/hw3-cse506g05/ ; bash"'
+#ssh
 #press 'Enter''~''.' to close frozen connections
 #git
 alias gitlast='git rev-parse HEAD | xargs git show --name-only'
 alias gitlast-full='git rev-parse HEAD | xargs git show'
-
-# added by Miniconda2 installer
-#export PATH="/home/avkumar/miniconda2/bin:$PATH"
-# clinc
-function docker-flush() {
-    dockerlist=$(docker ps -a -q)
-    if [ "${dockerlist}" != "" ]; then
-        for d in ${dockerlist}; do
-            echo "***** ${d}"
-            docker stop ${d} 2>&1 > /dev/null
-            docker rm ${d} 2>&1 > /dev/null
-        done
-    fi
-}
-
-function lucida-full-stack() {
-    docker-flush && make docker && docker-compose up
-}
-
-export EDITOR=vim ####whatever editor
-export CLINC_PATH=/home/avinash.kumar/workspace/lucida-clinc
-export LUCIDA_HOSTNAME=ghats.clinc.ai 
-export PYTHONPATH=/home/avinash.kumar/workspace/lucida-clinc
-
 #leetcode
 alias lc='leetcode'
 alias lch='echo "Read help first                         $ leetcode help
